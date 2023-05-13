@@ -22,7 +22,7 @@ function AddParticipantForm({ onAdd }) {
       />
       <input
         type="number"
-        placeholder="Valor"
+        placeholder="Valor (R$)"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
