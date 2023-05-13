@@ -11,10 +11,18 @@ function EventParticipants() {
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
 
+  // Calculate initial confirmed participants and total value.
+  const initialTotalConfirmed = event.participants.filter(
+    (p) => p.isConfirmed
+  ).length;
+  const initialTotalValue = event.participants.reduce((total, participant) => {
+    return total + (participant.isConfirmed ? participant.value : 0);
+  }, 0);
+
   const [participants, setParticipants] = useState(event.participants);
-  const [totalConfirmed, setTotalConfirmed] = useState(0);
+  const [totalConfirmed, setTotalConfirmed] = useState(initialTotalConfirmed);
+  const [totalValue, setTotalValue] = useState(initialTotalValue);
   const [confirmedParticipants, setConfirmedParticipants] = useState(0);
-  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
     const newTotalValue = participants.reduce((total, participant) => {
@@ -35,11 +43,20 @@ function EventParticipants() {
       )
     );
     setTotalConfirmed(confirmed ? totalConfirmed + 1 : totalConfirmed - 1);
-    setTotalValue(confirmed ? totalValue + parseFloat(value) : totalValue - parseFloat(value));
+    setTotalValue(
+      confirmed
+        ? totalValue + parseFloat(value)
+        : totalValue - parseFloat(value)
+    );
   };
-  
+
   const handleAdd = (name, value) => {
-    const newParticipant = { id: Date.now(), name, value: parseFloat(value), isConfirmed: false };
+    const newParticipant = {
+      id: Date.now(),
+      name,
+      value: parseFloat(value),
+      isConfirmed: false,
+    };
     setParticipants([...participants, newParticipant]);
   };
 
