@@ -15,9 +15,10 @@ function ParticipantRow({ participant, onUpdate, onDelete }) {
         isConfirmed ? classes.confirmed : ""
       }`}
     >
+      <span className={classes.participantConfirmation}>{isConfirmed ? '✅' : '🕔' }</span>
       <span className={classes.participantName}>{participant.name}</span>
-      <span className={classes.participantValue}>{participant.value}</span>
-      <button onClick={toggleConfirmation}>Confirmar</button>
+      <span className={classes.participantValue}>R$ {participant.value}</span>
+      <button onClick={toggleConfirmation}>{isConfirmed ? 'Confirmado' : 'Pendente' }</button>
       <button onClick={() => onDelete(participant.id)}>Remover</button>
     </div>
   );

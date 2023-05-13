@@ -24,13 +24,18 @@
     border: none;
     cursor: pointer;
     margin: 2px;
+    min-width: 7rem;
 }
 
-.participant.confirmed {
+.participant.confirmed .participantValue {
     text-decoration: line-through;
     color: #aaa;
 }
 
 .participant.confirmed button {
     background-color: #aaa;
+}
+
+.participantConfirmation {
+    padding: 10px;
 }

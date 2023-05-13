@@ -71,7 +71,7 @@ function EventParticipants() {
         ))}
       <div>Total de Participantes: {participants?.length || 0}</div>
       <div>Confirmados: {totalConfirmed}</div>
-      <div>Valor Total Arrecadado: {totalValue}</div>
+      <div>Valor Total Arrecadado: R$ {totalValue}</div>
     </div>
   );
 }
