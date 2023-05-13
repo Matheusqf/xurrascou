@@ -3,7 +3,7 @@ const DUMMY_EVENTS = [
       id: 'e1',
       title: 'Churrasco de Verão',
       description:
-        'Todos estão convidados! Sim, todos! Essa será uma ótima celebração de verão ideal para toda a família',
+        'Todos estão convidados! Sim, todos! Essa será uma ótima celebração de verão ideal para toda a família.',
       location: 'Rua 25, 12345 Fortaleza',
       date: '2023-05-12',
       image: 'images/churrasco1.jpg',
@@ -12,22 +12,22 @@ const DUMMY_EVENTS = [
         name: "Matheus de Queiroz",
         id: 1,
         value: 50,
-        confirmed: false
+        isConfirmed: true
       },{
         name: "Maria Clara",
         id: 2,
         value: 60,
-        confirmed: false
+        isConfirmed: false
       },{
         name: "Tobias",
         id: 3,
         value: 30,
-        confirmed: false
+        isConfirmed: false
       },{
         name: "Sophia",
         id: 4,
         value: 40,
-        confirmed: false
+        isConfirmed: false
       },
     ]
     },
@@ -46,7 +46,7 @@ const DUMMY_EVENTS = [
       id: 'e3',
       title: 'Jogo do Brasil',
       description:
-        'Churrasco, Futebol e Cerveja. Nada melhor do que essa combinaçao para começar o mês, certo? Esperamos você',
+        'Churrasco, Futebol e Cerveja. Nada melhor do que essa combinaçao para começar o mês, certo? Esperamos você!',
       location: 'Avenida Mauro Ramos 950, 10115 Florianópolis',
       date: '2023-04-01',
       image: 'images/churrasco3.jpg',

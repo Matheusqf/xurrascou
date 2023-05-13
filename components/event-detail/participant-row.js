@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./participant-row.module.css";
 
 function ParticipantRow({ participant, onUpdate, onDelete }) {
-  const [isConfirmed, setConfirmed] = useState(false);
+  const [isConfirmed, setConfirmed] = useState(participant.isConfirmed);
 
   const toggleConfirmation = () => {
     setConfirmed(!isConfirmed);
@@ -15,7 +15,7 @@ function ParticipantRow({ participant, onUpdate, onDelete }) {
         isConfirmed ? classes.confirmed : ""
       }`}
     >
-      <span className={classes.participantConfirmation}>{isConfirmed ? '✅' : '🕔' }</span>
+      <span className={classes.participantConfirmation}>{isConfirmed ? '☑️' : '🕔' }</span>
       <span className={classes.participantName}>{participant.name}</span>
       <span className={classes.participantValue}>R$ {participant.value}</span>
       <button onClick={toggleConfirmation}>{isConfirmed ? 'Confirmado' : 'Pendente' }</button>
