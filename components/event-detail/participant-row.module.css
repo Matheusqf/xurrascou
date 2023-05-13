@@ -1,0 +1,36 @@
+.participant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.participantName {
+    flex-grow: 1;
+}
+
+.participantValue {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.participant button {
+    background-color: #ffcc00;
+    color: #2b2b2b;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.participant.confirmed {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.participant.confirmed button {
+    background-color: #aaa;
+}
