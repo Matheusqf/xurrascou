@@ -3,7 +3,7 @@ import classes from "./event-participants.module.css";
 
 function AddParticipantForm({ onAdd }) {
   const [name, setName] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
