@@ -46,7 +46,7 @@ function EventParticipants() {
     }
     if (isNaN(value) || !value.trim()) {
       notificationCtx.showNotification({
-        message: `Por favor, insira um valor.`,
+        message: `Por favor, insira um valor válido.`,
         status: "error",
       });
       return;

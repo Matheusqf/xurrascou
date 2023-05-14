@@ -12,6 +12,13 @@ function AddParticipantForm({ name, setName, value, setValue }) {
     }
   }, [isDrinkIncluded, setValue]);
 
+  const handleValueChange = (e) => {
+    const newValue = e.target.value;
+    if (!isNaN(newValue) && newValue >= 0) {
+      setValue(newValue);
+    }
+  };
+
   return (
     <div className={classes.participantForm}>
       <label className={classes.label}>Nome</label>
@@ -39,7 +46,7 @@ function AddParticipantForm({ name, setName, value, setValue }) {
           type="number"
           placeholder="Valor (R$)"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleValueChange}
         />
       </div>
       <div className={classes.message}>
