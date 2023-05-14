@@ -17,6 +17,7 @@ function AllEventsPage() {
   return (
     <Fragment>
       <EventSearch onSearch={findEventsHandler} />
+      <h1 className="center">Todos os eventos</h1>
       <EventList items={events} />
     </Fragment>
   );
