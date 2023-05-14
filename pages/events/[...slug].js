@@ -12,8 +12,6 @@ function FilteredEventsPage() {
 
   const filterData = router.query.slug;
 
-  console.log(filterData);
-
   if (!filterData) {
     return <p className="center">Carregando...</p>;
   }
