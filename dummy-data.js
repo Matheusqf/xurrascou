@@ -7,7 +7,7 @@ const DUMMY_EVENTS = [
       location: 'Rua 25, 12345 Fortaleza',
       date: '2023-05-12',
       image: 'images/churrasco1.jpg',
-      isFeatured: false,
+      isFeatured: true,
       participants: [{
         name: "Matheus de Queiroz",
         id: 1,
@@ -17,7 +17,7 @@ const DUMMY_EVENTS = [
         name: "Maria Clara",
         id: 2,
         value: 60,
-        isConfirmed: false
+        isConfirmed: true
       },{
         name: "Tobias",
         id: 3,
@@ -39,7 +39,7 @@ const DUMMY_EVENTS = [
       location: 'Vizinhança 5, 98765 São Paulo',
       date: '2023-05-30',
       image: 'images/churrasco2.jpg',
-      isFeatured: true,
+      isFeatured: false,
       participants: []
     },
     {
