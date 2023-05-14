@@ -69,7 +69,6 @@ export function EventsProvider({ children }) {
   };
 
   const removeParticipant = (eventId, participantId) => {
-    console.log("remover2: ", participantId);
     setEvents((prevEvents) =>
       prevEvents.map((event) =>
         event.id === eventId
