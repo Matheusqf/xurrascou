@@ -27,6 +27,12 @@
     min-width: 7rem;
 }
 
+@media (max-width: 600px) {
+    .participant button {
+        min-width: auto;
+    }
+}
+
 .participant.confirmed .participantValue {
     text-decoration: line-through;
     color: #aaa;
