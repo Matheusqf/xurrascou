@@ -7,7 +7,7 @@ const INITIAL_EVENTS = [
     description:
       "Todos estão convidados! Sim, todos! Essa será uma ótima celebração de verão ideal para toda a família.",
     location: "Rua 25, 12345 Fortaleza",
-    date: "2023-05-12",
+    date: "2023-05-20",
     image: "images/churrasco1.jpg",
     isFeatured: true,
     participants: [

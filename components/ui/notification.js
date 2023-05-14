@@ -9,24 +9,28 @@ function Notification(props) {
   const { title, message, status } = props;
 
   let statusClasses = '';
+  let alertIcon = '🔔';
 
   if (status === 'success') {
     statusClasses = classes.success;
+    alertIcon = '☑️';
   }
 
   if (status === 'error') {
     statusClasses = classes.error;
+    alertIcon = '🚨';
   }
 
   if (status === 'pending') {
     statusClasses = classes.pending;
+    alertIcon = '⏳';
   }
 
   const activeClasses = `${classes.notification} ${statusClasses}`;
 
   return (
     <div className={activeClasses} onClick={notificationCtx.hideNotification}>
-      <h2>{title}</h2>
+      <span>{alertIcon}</span>
       <p>{message}</p>
     </div>
   );
