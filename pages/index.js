@@ -6,6 +6,7 @@ function HomePage() {
 
   return (
     <div>
+      <h1 className="center">Principais eventos</h1>
       <EventList items={featuredEvents} />
     </div>
   );
