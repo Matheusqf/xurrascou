@@ -1,7 +1,6 @@
 .summary {
   width: 100%;
   height: 30vh;
-  /* background-image: linear-gradient(to bottom left,  #ffd836, #f2cd34); */
   background-image: url('../../public/images/background4.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
