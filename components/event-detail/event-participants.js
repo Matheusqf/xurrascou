@@ -7,12 +7,14 @@ import { useEvents } from "../../store/events-context";
 import Dialog from "../dialog/dialog";
 import NotificationContext from "@/store/notification-context";
 import Button from "../ui/button";
+import useMobileDetect from "@/hooks/useMobileDetect";
 
 function EventParticipants() {
   const router = useRouter();
   const { getEventById, addParticipant, updateParticipant, removeParticipant } =
     useEvents();
   const notificationCtx = useContext(NotificationContext);
+  const isMobile = useMobileDetect();
 
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
@@ -99,9 +101,11 @@ function EventParticipants() {
   return (
     <div className={classes.eventParticipants}>
       <h2 className={classes.header}>
-        Participantes do churrasco
+        {isMobile ? "Participantes" : "Participantes do churrasco"}
         <span>
-          <Button onClick={handleAddClick}>Adicionar Participante</Button>
+          <Button onClick={handleAddClick} className={classes.addParticipant}>
+            <span>{isMobile ? "Add" : "Adicionar Participante"}</span>
+          </Button>
           <Dialog
             isOpen={isAddParticipantOpen}
             onConfirm={handleSubmit}

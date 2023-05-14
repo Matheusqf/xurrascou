@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./participant-form.module.css";
 
-function AddParticipantForm({ onAdd, name, setName, value, setValue }) {
+function AddParticipantForm({ name, setName, value, setValue }) {
   const [isDrinkIncluded, setDrinkIncluded] = React.useState(false);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function AddParticipantForm({ onAdd, name, setName, value, setValue }) {
     } else {
       setValue("30");
     }
-  }, [isDrinkIncluded]);
+  }, [isDrinkIncluded, setValue]);
 
   return (
     <div className={classes.participantForm}>

@@ -13,7 +13,7 @@ function Notification(props) {
 
   if (status === "success") {
     statusClasses = classes.success;
-    alertIcon = "☑️";
+    alertIcon = "✅";
   }
 
   if (status === "error") {
