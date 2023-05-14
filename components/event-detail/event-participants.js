@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ParticipantRow from "./participant-row";
 import classes from "./event-participants.module.css";
 import { useRouter } from "next/router";
 import AddParticipantForm from "./participant-form";
 import { useEvents } from "../../store/events-context";
+import Dialog from "../dialog/dialog";
+import NotificationContext from "@/store/notification-context";
+import Button from "../ui/button";
 
 function EventParticipants() {
   const router = useRouter();
   const { getEventById, addParticipant, updateParticipant, removeParticipant } =
     useEvents();
+  const notificationCtx = useContext(NotificationContext);
 
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
@@ -16,6 +20,41 @@ function EventParticipants() {
   const [participants, setParticipants] = useState(event.participants);
   const [totalConfirmed, setTotalConfirmed] = useState(0);
   const [totalValue, setTotalValue] = useState(0);
+  const [isAddParticipantOpen, setAddParticipantOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [value, setValue] = useState("");
+
+  const handleAddClick = () => {
+    setAddParticipantOpen(true);
+  };
+
+  const handleClose = () => {
+    setAddParticipantOpen(false);
+    setName("");
+    setValue("");
+  };
+
+  const handleSubmit = () => {
+    if (!name.trim()) {
+      notificationCtx.showNotification({
+        message: `Por favor, insira um nome para o participante.`,
+        status: "error",
+      });
+      return;
+    }
+    if (isNaN(value) || !value.trim()) {
+      notificationCtx.showNotification({
+        message: `Por favor, insira um valor.`,
+        status: "error",
+      });
+      return;
+    }
+
+    handleAdd(name, Number(value));
+    setName("");
+    setValue("");
+    setAddParticipantOpen(false);
+  };
 
   useEffect(() => {
     const confirmedParticipants = participants.filter((p) => p.isConfirmed);
@@ -62,7 +101,19 @@ function EventParticipants() {
       <h2 className={classes.header}>
         Participantes do churrasco
         <span>
-          <AddParticipantForm onAdd={handleAdd} />
+          <Button onClick={handleAddClick}>Adicionar Participante</Button>
+          <Dialog
+            isOpen={isAddParticipantOpen}
+            onConfirm={handleSubmit}
+            onCancel={handleClose}
+          >
+            <AddParticipantForm
+              name={name}
+              setName={setName}
+              value={value}
+              setValue={setValue}
+            />
+          </Dialog>
         </span>
       </h2>
       {participants.map((p) => (

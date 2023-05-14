@@ -11,7 +11,6 @@ function AddEventForm() {
   const notificationCtx = useContext(NotificationContext);
 
   const [formData, setFormData] = useState({
-    title: "",
     description: "",
     location: "",
     date: "",
@@ -38,26 +37,24 @@ function AddEventForm() {
         field !== "participants"
       ) {
         notificationCtx.showNotification({
-          title: "Erro",
-          message: `Por favor, preencha o campo ${field}.`,
+          message: `Por favor, preencha o campo '${field}'.`,
           status: "error",
         });
         return;
       }
     }
 
-    // Add evento to context
+    // Add event to context
     addEvent(formData);
 
     // Notify user
     notificationCtx.showNotification({
-      title: "Sucesso",
       message: "Evento adicionado com sucesso!",
       status: "success",
     });
 
     // Redirects to home page after successful form submission
-    router.push('/');
+    router.push("/");
   };
 
   return (
