@@ -11,6 +11,11 @@ export function NotificationContextProvider(props) {
 
   function showNotificationHandler(notificationData) {
     setActiveNotification(notificationData);
+
+    // Remove notification after 4 seconds
+    setTimeout(() => {
+      setActiveNotification(null);
+    }, 4000);
   }
 
   function hideNotificationHandler() {
