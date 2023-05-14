@@ -5,51 +5,37 @@ import { useRouter } from "next/router";
 import AddParticipantForm from "./AddParticipantForm";
 import { useEvents } from "../../store/events-context";
 
-
 function EventParticipants() {
   const router = useRouter();
-  const { getEventById } = useEvents();
+  const { getEventById, addParticipant, updateParticipant, removeParticipant } =
+    useEvents();
 
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
 
-  // Calculate initial confirmed participants and total value.
-  const initialTotalConfirmed = event.participants.filter(
-    (p) => p.isConfirmed
-  ).length;
-  const initialTotalValue = event.participants.reduce((total, participant) => {
-    return total + (participant.isConfirmed ? participant.value : 0);
-  }, 0);
-
   const [participants, setParticipants] = useState(event.participants);
-  const [totalConfirmed, setTotalConfirmed] = useState(initialTotalConfirmed);
-  const [totalValue, setTotalValue] = useState(initialTotalValue);
-  const [confirmedParticipants, setConfirmedParticipants] = useState(0);
+  const [totalConfirmed, setTotalConfirmed] = useState(0);
+  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
-    const newTotalValue = participants.reduce((total, participant) => {
-      return total + (participant.isConfirmed ? participant.value : 0);
-    }, 0);
-    setTotalValue(newTotalValue);
-
-    const newConfirmedParticipants = participants.filter(
-      (participant) => participant.isConfirmed
-    ).length;
-    setConfirmedParticipants(newConfirmedParticipants);
+    const confirmedParticipants = participants.filter((p) => p.isConfirmed);
+    setTotalConfirmed(confirmedParticipants.length);
+    setTotalValue(
+      confirmedParticipants.reduce((total, { value }) => total + value, 0)
+    );
   }, [participants]);
 
   const handleUpdate = (id, confirmed, value) => {
+    const updatedParticipant = {
+      id,
+      name: participants.find((p) => p.id === id).name,
+      value: parseFloat(value),
+      isConfirmed: confirmed,
+    };
     setParticipants(
-      participants.map((p) =>
-        p.id === id ? { ...p, isConfirmed: confirmed } : p
-      )
+      participants.map((p) => (p.id === id ? updatedParticipant : p))
     );
-    setTotalConfirmed(confirmed ? totalConfirmed + 1 : totalConfirmed - 1);
-    setTotalValue(
-      confirmed
-        ? totalValue + parseFloat(value)
-        : totalValue - parseFloat(value)
-    );
+    updateParticipant(eventId, updatedParticipant);
   };
 
   const handleAdd = (name, value) => {
@@ -59,16 +45,16 @@ function EventParticipants() {
       value: parseFloat(value),
       isConfirmed: false,
     };
-    setParticipants([...participants, newParticipant]);
+    setParticipants((prevParticipants) => [
+      ...prevParticipants,
+      newParticipant,
+    ]);
+    addParticipant(eventId, newParticipant);
   };
 
   const handleDelete = (id) => {
-    const participantToDelete = participants.find((p) => p.id === id);
-    if (participantToDelete.isConfirmed) {
-      setTotalConfirmed(totalConfirmed - 1);
-      setTotalValue(totalValue - participantToDelete.value);
-    }
     setParticipants(participants.filter((p) => p.id !== id));
+    removeParticipant(eventId, id);
   };
 
   return (
@@ -79,16 +65,15 @@ function EventParticipants() {
           <AddParticipantForm onAdd={handleAdd} />
         </span>
       </h2>
-      {participants &&
-        participants.map((p) => (
-          <ParticipantRow
-            key={p.id}
-            participant={p}
-            onUpdate={handleUpdate}
-            onDelete={handleDelete}
-          />
-        ))}
-      <div>Total de Participantes: {participants?.length || 0}</div>
+      {participants.map((p) => (
+        <ParticipantRow
+          key={p.id}
+          participant={p}
+          onUpdate={handleUpdate}
+          onDelete={handleDelete}
+        />
+      ))}
+      <div>Total de Participantes: {participants.length}</div>
       <div>Confirmados: {totalConfirmed}</div>
       <div>Valor Total Arrecadado: R$ {totalValue}</div>
     </div>
