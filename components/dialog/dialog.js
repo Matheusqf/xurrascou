@@ -1,4 +1,4 @@
-import classes from "./Dialog.module.css";
+import classes from "./dialog.module.css";
 
 function Dialog({ isOpen, children, onConfirm, onCancel }) {
   if (!isOpen) {
