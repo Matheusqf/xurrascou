@@ -11,10 +11,11 @@ function AddEventForm() {
   const notificationCtx = useContext(NotificationContext);
 
   const [formData, setFormData] = useState({
+    id: Date.now().toString(),
     description: "",
     location: "",
     date: "",
-    image: "images/background4.jpg",
+    image: "images/background1.jpg",
     isFeatured: true,
     participants: [],
   });
