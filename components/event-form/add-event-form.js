@@ -63,7 +63,7 @@ function AddEventForm() {
   return (
     <form className={classes["add-event-form"]} onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="title">Título</label>
+        <label htmlFor="title">Nome do evento</label>
         <input id="title" name="title" onChange={handleChange} />
       </div>
       <div>

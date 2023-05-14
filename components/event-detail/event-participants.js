@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ParticipantRow from "./participant-row";
 import classes from "./event-participants.module.css";
 import { useRouter } from "next/router";
-import AddParticipantForm from "./AddParticipantForm";
+import AddParticipantForm from "./participant-form";
 import { useEvents } from "../../store/events-context";
 
 function EventParticipants() {
