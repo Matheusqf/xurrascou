@@ -1,13 +1,14 @@
+import { useEvents } from "@/store/events-context";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
 import Button from "../../components/ui/button";
 import ErrorAlert from "../../components/ui/error-alert";
-import { getFilteredEvents } from "../../dummy-data";
 
 function FilteredEventsPage() {
   const router = useRouter();
+  const { getFilteredEvents } = useEvents();
 
   const filterData = router.query.slug;
 
@@ -37,7 +38,7 @@ function FilteredEventsPage() {
           <p>Filtro invalido. Por favor, ajuste os valores!</p>
         </ErrorAlert>
         <div className="center">
-          <Button link='/events'>Mostrar todos os eventos</Button>
+          <Button link="/events">Mostrar todos os eventos</Button>
         </div>
       </Fragment>
     );
@@ -55,7 +56,7 @@ function FilteredEventsPage() {
           <p>Sem eventos para essa data!</p>
         </ErrorAlert>
         <div className="center">
-          <Button link='/events'>Mostrar todos os eventos</Button>
+          <Button link="/events">Mostrar todos os eventos</Button>
         </div>
       </Fragment>
     );

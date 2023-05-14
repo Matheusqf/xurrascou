@@ -12,6 +12,9 @@ function MainHeader() {
           <li>
             <Link href="/events">Mostrar todos os eventos</Link>
           </li>
+          <li>
+            <Link href="/add-event">Adicionar Evento</Link>
+          </li>
         </ul>
       </nav>
     </header>

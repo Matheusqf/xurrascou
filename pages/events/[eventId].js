@@ -1,14 +1,15 @@
 import { Fragment } from "react";
 import { useRouter } from "next/router";
-import { getEventById } from "../../dummy-data";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
 import ErrorAlert from "../../components/ui/error-alert";
 import EventParticipants from "@/components/event-detail/event-participants";
+import { useEvents } from "@/store/events-context";
 
 function EventDetailPage() {
   const router = useRouter();
+  const { getEventById } = useEvents();
 
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
@@ -33,7 +34,6 @@ function EventDetailPage() {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
-      {/* {event.participants && event.participants.length > 0 && <EventParticipants/>} */}
       <EventParticipants/>
     </Fragment>
   );

@@ -28,6 +28,11 @@
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .navigation ul {
+    display: flex;
   }
   
   @media (min-width: 768px) {
