@@ -16,7 +16,7 @@ function AddEventForm() {
     location: "",
     date: "",
     image: "images/background4.jpg",
-    isFeatured: false,
+    isFeatured: true,
     participants: [],
   });
 
@@ -56,8 +56,8 @@ function AddEventForm() {
       status: "success",
     });
 
-    // Redirects to "/events" page after successful form submission
-    router.push('/events');
+    // Redirects to home page after successful form submission
+    router.push('/');
   };
 
   return (

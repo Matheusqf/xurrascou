@@ -67,7 +67,7 @@ const INITIAL_EVENTS = [
     location: "Parque da Independência, São Paulo",
     date: "2023-09-07",
     image: "images/churrasco4.jpg",
-    isFeatured: true,
+    isFeatured: false,
     participants: [
       {
         name: "João Silva",
@@ -149,7 +149,7 @@ const INITIAL_EVENTS = [
     location: "Rua São Jorge, 777, São Paulo",
     date: "2023-06-15",
     image: "images/churrasco8.jpg",
-    isFeatured: true,
+    isFeatured: false,
     participants: [],
   },
   {
@@ -171,7 +171,7 @@ const INITIAL_EVENTS = [
     location: "Rua Direita, 150, Salvador",
     date: "2023-06-24",
     image: "images/churrasco10.jpg",
-    isFeatured: true,
+    isFeatured: false,
     participants: [
       {
         name: "João Pedro",
